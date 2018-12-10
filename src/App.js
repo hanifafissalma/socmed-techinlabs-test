@@ -1,25 +1,18 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
-
+import Home from './pages/Home';
+import ListFriends from './pages/ListFriends';
+import PostUser from './pages/subpages/PostUser';
+import Album from './pages/subpages/Album';
+import AlbumDetail from './pages/subpages/AlbumDetail';
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        {/* <Home/> */}
+        {/* <ListFriends/> */}
+        {/* <PostUser/> */}
+        {/* <Album/> */}
+        <AlbumDetail/>
       </div>
     );
   }

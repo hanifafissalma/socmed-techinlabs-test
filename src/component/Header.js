@@ -8,7 +8,7 @@ import {
   NavItem,
   Button,
 } from 'reactstrap';
-
+import {Link} from 'react-router-dom';
 class Header extends Component{
     constructor(props){
         super(props);
@@ -40,10 +40,10 @@ class Header extends Component{
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className="ml-auto" navbar>
                             <NavItem>
-                                <Button color="info">Home</Button>
+                                <Link to="/"><Button color="info">Home</Button></Link>
                             </NavItem>
                             <NavItem>
-                                <Button color="info">List of Friends</Button>
+                                <Link to="/list_friends"><Button color="info">List of Friends</Button></Link>
                             </NavItem>
                         </Nav>
                     </Collapse>

@@ -3,8 +3,6 @@ import {
     Container,
     Card,
     CardImg,
-    CardBody,
-    CardTitle
 } from 'reactstrap';
 import Header from '../../component/Header';
 import SubHeader from './SubHeader';

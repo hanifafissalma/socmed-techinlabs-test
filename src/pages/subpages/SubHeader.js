@@ -14,10 +14,10 @@ class SubHeader extends Component{
                     <Col sm={{ size: 4, offset: 5 }}>
                         <Nav>
                             <NavItem>
-                                <NavLink href="#">Post</NavLink>
+                                <NavLink href="/user/:id">Post</NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink href="#">Album</NavLink>
+                                <NavLink href="album/:id">Album</NavLink>
                             </NavItem>
                         </Nav>
                     </Col>

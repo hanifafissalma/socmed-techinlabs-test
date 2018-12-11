@@ -13,6 +13,7 @@ import ShowComment from './ShowComment';
 import {connect} from 'react-redux';
 import {fetchAllPost} from '../api/post.js';
 import {fetchAllComment} from '../api/comment.js';
+import {Link} from 'react-router-dom';
 class ShowPost extends Component{
     constructor(props){
         super(props);
@@ -39,7 +40,7 @@ class ShowPost extends Component{
                 {post.map((post,index)=>
                     <Card style={style.card} key={index}>
                         <div style={{justifyContent:'flex-end', display:'flex'}}>
-                            <Button color="primary" size="sm">Show Details</Button>
+                            <Link to={`/post/${post.id}`}><Button color="primary" size="sm">Show Details</Button></Link>
                             <Button color="warning" size="sm">Edit</Button>
                             <Button color="danger" size="sm" >Delete</Button>
                         </div>

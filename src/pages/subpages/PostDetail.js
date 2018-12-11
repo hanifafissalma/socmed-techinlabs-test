@@ -15,56 +15,61 @@ import {
 import Header from '../../component/Header';
 import {connect} from 'react-redux';
 import {fetchPostDetail} from '../../api/post.js';
+import {fetchAllComment} from '../../api/comment.js';
 class PostDetail extends Component{
     constructor(props){
         super(props);
         this.state={
-            post:[]
+            post:[],
+            comment:[]
         };
     }
     componentDidMount(){
         const {match} = this.props;
         this.props.fetchPostDetail(match.params.id);
+        this.props.fetchAllComment(match.params.id);
     }
     render(){
         const style={
             card:{
-                padding:20
+                padding:20,
+                margin:10
             },
             subcard:{
                 padding:20,
                 fontSize:14
             }
         }
-        const {post}=this.props;
+        const {post, comment}=this.props;
         return(
             <Fragment>
                 <Header/>
                 <Container>
-                    {/* <SubHeader/> */}
                     <Card style={style.card}>
                         <div style={{justifyContent:'flex-end', display:'flex'}}>
                             <Button color="warning" size="sm">Edit</Button>
                             <Button color="danger" size="sm" >Delete</Button>
                         </div>
-                        <CardTitle>Username</CardTitle>
+                        <CardTitle>{post.userId}</CardTitle>
                         <br/>
-                        <CardSubtitle>Title</CardSubtitle>
-                        <CardText>isi postnya disini</CardText>
+                        <CardSubtitle>{post.title}</CardSubtitle>
+                        <CardText>{post.body}</CardText>
                         <hr/>
-                        <Row>
-                            <Col sm={{ size: 10, offset: 1 }}>
-                                <Card style={style.subcard}>
-                                    <h5>Username</h5>
-                                    <CardSubtitle>Title Comment</CardSubtitle>
-                                    <CardText>isi komennya disini</CardText>
-                                    <div style={{justifyContent:'flex-end', display:'flex'}}>
-                                        <Button color="warning" size="sm">Edit</Button>
-                                        <Button color="danger" size="sm" >Delete</Button>
-                                    </div>
-                                </Card>
-                            </Col>
-                        </Row>
+                        {comment.map((comment,index)=>
+                            <Row key={index}>
+                                <Col sm={{ size: 10, offset: 1 }}>
+                                    <Card style={style.subcard}>
+                                        <h5>{comment.name}</h5>
+                                        <CardSubtitle>{comment.title}</CardSubtitle>
+                                        <CardText>{comment.body}</CardText>
+                                        <div style={{justifyContent:'flex-end', display:'flex'}}>
+                                            <Button color="warning" size="sm">Edit</Button>
+                                            <Button color="danger" size="sm" >Delete</Button>
+                                        </div>
+                                    </Card>
+                                </Col>
+                            </Row>
+                        )}
                         <hr/>
                         <h6>Comment</h6>
                         <Form id="comment">
@@ -84,10 +89,12 @@ class PostDetail extends Component{
 }
 const mapStateToProps = state => ({
     post: state.post.post,
+    comment : state.comment.comment
 })
   
 const mapDispatchToProps = dispatch => ({
     fetchPostDetail: (id) => dispatch(fetchPostDetail(id)),
+    fetchAllComment: (id) => dispatch(fetchAllComment(id))
 })
   
 export default connect(mapStateToProps, mapDispatchToProps)(PostDetail)

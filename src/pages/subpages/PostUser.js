@@ -13,7 +13,6 @@ import {
     Col,
 } from 'reactstrap';
 import Header from '../../component/Header';
-import SubHeader from './SubHeader';
 import {connect} from "react-redux";
 import {fetchPostById} from '../../api/post';
 import {fetchAllComment} from '../../api/comment';
@@ -46,12 +45,11 @@ class PostUser extends Component{
                 margin:20
             }
         }
-        const {post, comment}=this.props;
+        const {post,user, comment}=this.props;
         return(
             <Fragment>
                 <Header/>
                 <Container style={style.container}>
-                    <SubHeader/>
                     {post.map((post,index)=>
                         <Card style={style.card} key={index}>
                             <div style={{justifyContent:'flex-end', display:'flex'}}>
@@ -59,7 +57,7 @@ class PostUser extends Component{
                                 <Button color="warning" size="sm">Edit</Button>
                                 <Button color="danger" size="sm" >Delete</Button>
                             </div>
-                            <CardTitle>{post.userId}</CardTitle>
+                            <CardTitle>{post.userId === user.id ? user.name:null}</CardTitle>
                             <br/>
                             <CardSubtitle>{post.title}</CardSubtitle>
                             <CardText>{post.body}</CardText>
@@ -99,7 +97,8 @@ class PostUser extends Component{
 }
 const mapStateToProps = state => ({
     post: state.post.post,
-    comment: state.comment.comment
+    comment: state.comment.comment,
+    user: state.user.user
   })
   
 const mapDispatchToProps = dispatch => ({

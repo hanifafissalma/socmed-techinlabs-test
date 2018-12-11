@@ -5,7 +5,6 @@ import {
     CardImg,
 } from 'reactstrap';
 import Header from '../../component/Header';
-import SubHeader from './SubHeader';
 class AlbumDetail extends Component{
     render(){
         const style={
@@ -30,7 +29,7 @@ class AlbumDetail extends Component{
             <Fragment>
                 <Header/>
                 <Container style={style.container}>
-                    <SubHeader/>
+                    <h3>Album Detail</h3>
                     <Card style={style.card}>
                         <Card style={style.album}>
                             <CardImg top width="100%" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180" alt="Card image cap" />

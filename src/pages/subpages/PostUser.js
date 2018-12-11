@@ -16,6 +16,7 @@ import Header from '../../component/Header';
 import {connect} from "react-redux";
 import {fetchPostById} from '../../api/post';
 import {fetchAllComment} from '../../api/comment';
+import {Link} from 'react-router-dom';
 class PostUser extends Component{
     constructor(props){
         super(props);
@@ -53,7 +54,6 @@ class PostUser extends Component{
                     {post.map((post,index)=>
                         <Card style={style.card} key={index}>
                             <div style={{justifyContent:'flex-end', display:'flex'}}>
-                                <Button color="primary" size="sm">Show Details</Button>
                                 <Button color="warning" size="sm">Edit</Button>
                                 <Button color="danger" size="sm" >Delete</Button>
                             </div>

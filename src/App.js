@@ -21,7 +21,7 @@ class App extends Component {
             <Route path="/album/:id" render={props => <Album {...props} />} />
             <Route path="/list_album/:id" render={props => <AlbumDetail {...props} />} />
             <Route path="/photo/:id" render={props => <PhotoDetail {...props} />} />
-            <Route path="/user/post/:id" render={props => <PostDetail {...props} />} />
+            <Route path="/post/:id" render={props => <PostDetail {...props} />} />
           </Switch>
         </BrowserRouter>
       </Provider>

@@ -1,9 +1,23 @@
 import React, {Component, Fragment} from 'react';
 import {
     Container,
+    Row,
+    Col
 } from 'reactstrap';
 import Header from '../../component/Header';
+import {connect} from 'react-redux';
+import {fetchPhotoById} from '../../api/photo.js';
 class PhotoDetail extends Component{
+    constructor(props){
+        super(props);
+        this.state={
+            photo:[]
+        };
+    }
+    componentDidMount(){
+        const {match} = this.props;
+        this.props.fetchPhotoById(match.params.id);
+    }
     render(){
         const style={
             container:{
@@ -18,21 +32,31 @@ class PhotoDetail extends Component{
             },
             photo:{
                 padding:10,
-                margin:5,
-                width:'100%',
-                float:'center'
+                display: 'block',
+                marginLeft: 'auto',
+                marginRight: 'auto',
             }
         }
+        const {photo} = this.props;
         return(
             <Fragment>
                 <Header/>
                 <Container style={style.container}>
+                    <h3>Photo Detail - {photo.id}</h3>
                     <div style={style.photo}>
-                        <img src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180" alt="foto"/>
+                        <img src={photo.url} style={{width:600, height:600}} alt="foto"/>
                     </div>
                 </Container>
             </Fragment>
         )
     }
 }
-export default PhotoDetail;
+const mapStateToProps = state => ({
+    photo: state.photo.photo
+  })
+  
+const mapDispatchToProps = dispatch => ({
+    fetchPhotoById: (id) => dispatch(fetchPhotoById(id))
+  })
+  
+export default connect(mapStateToProps, mapDispatchToProps)(PhotoDetail)

@@ -35,7 +35,7 @@ class Album extends Component{
             },
             album:{
                 padding:10,
-                margin:5,
+                margin:10,
                 width:'100%',
             }
         }
@@ -47,7 +47,7 @@ class Album extends Component{
                     <h3>Album</h3>
                     <Card style={style.card}>
                     {album.map((album,index)=>
-                        <Link to={`list_album/${album.albumId}`} key={index}>
+                        <Link to={`/list_album/${album.albumId}`} key={index}>
                             <Card style={style.album} >
                                 <CardImg top width="100%" src={album.thumbnailUrl} style={{width:250, height:250, float:'center'}} alt="Album" />
                                 <CardBody>
